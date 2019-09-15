@@ -35,7 +35,7 @@ $ docker-compose exec main bash
 
 ```bash
 # after 'docker-compose exec main bash'
-$ platformio run
+$ make
 ```
 
 ## ソースコード編集
