@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/k-ishigaki/cquery-docker.git
+	branch = master
+	commit = ca3acf2fe28ef7e1805cfa1b924253ce5c9bf359
+	parent = ae79ee16051641cb49f1cafca7c6d9f44e687423
+	method = merge
+	cmdver = 0.4.0
