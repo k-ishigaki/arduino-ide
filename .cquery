@@ -1,0 +1,26 @@
+%clang
+%c -std=c99
+%cpp -std=c++11
+
+# includes
+-I/root/.platformio/packages/framework-arduinoavr/cores/arduino
+-I/root/.platformio/packages/framework-arduinoavr/variants/standard
+-I/root/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/EEPROM/src
+-I/root/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/HID/src
+-I/root/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SPI/src
+-I/root/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SoftwareSerial/src
+-I/root/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/Wire/src
+-I/root/.platformio/packages/toolchain-atmelavr/avr/include
+-I/root/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include
+-I/root/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include-fixed
+-I/root/.platformio/packages/tool-unity
+-I/root/project_root/src
+# defines
+-DPLATFORMIO=30606
+-DARDUINO_AVR_UNO
+-DF_CPU=16000000L
+-DARDUINO_ARCH_AVR
+-DARDUINO=10805
+-D__AVR_ATmega328P__
+# ignore unknown attributes
+-Wno-unknown-attributes
