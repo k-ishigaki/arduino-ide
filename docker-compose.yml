@@ -1,0 +1,47 @@
+version: "3"
+services:
+    platformio:
+        build:
+            context: ./platformio-docker
+        volumes:
+            - ./:/root/project_root
+            - platformio:/root/.platformio
+        stdin_open: true
+
+    cquery:
+        build:
+            context: ./cquery-docker
+        depends_on:
+            - platformio
+        volumes:
+            - ./:/root/project_root
+            - platformio:/root/.platformio
+        stdin_open: true
+
+    docker-langserver:
+        image: rcjsuen/docker-langserver
+        volumes:
+            - ./:/root/project_root
+        stdin_open: true
+        entrypoint: /bin/ash
+
+    main:
+        build:
+            context: ./neovim-docker
+            args:
+                cmds:
+                    ${COMPOSE_PROJECT_NAME}_platformio_1:platformio
+                    ${COMPOSE_PROJECT_NAME}_cquery_1:cquery
+                    ${COMPOSE_PROJECT_NAME}_docker-langserver_1:/docker-langserver/bin/docker-langserver
+        depends_on:
+            - cquery
+        volumes:
+            - ./:/root/project_root
+            - platformio:/root/.platformio
+            - /var/run/docker.sock:/var/run/docker.sock
+            - ./coc-settings.json:/root/.config/nvim/coc-settings.json
+        stdin_open: true
+        working_dir: /root/project_root
+
+volumes:
+    platformio:
