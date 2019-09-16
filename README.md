@@ -42,7 +42,7 @@ $ make
 
 ```bash
 # after 'docker-compose exec main bash'
-$ nvim src/main
+$ nvim src/main.cpp
 ```
 
 ## 終了，アンインストール
