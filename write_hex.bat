@@ -1,10 +1,9 @@
 @echo off
 setlocal
 
-rem Prease set arduino program path
-set ARDUINO_HOME=C:\Program Files (x86)\Arduino
-set TARGET=atmega328p
+set ARDUINO_TOOLS=C:\Program Files (x86)\Arduino\hardware\tools
 set HEX_FILE=.pio\build\uno\firmware.hex
+set TARGET=atmega328p
 
 if "%1" == "" (
     echo usage: %0 ^<port^>
@@ -12,4 +11,4 @@ if "%1" == "" (
     exit /b 1
 )
 
-"%ARDUINO_HOME%\hardware\tools\avr\bin\avrdude" -C"%ARDUINO_HOME%\hardware/tools/avr/etc/avrdude.conf" -q -q -p"%TARGET%" -carduino -P%1 -b115200 -D -Uflash:w:"%HEX_FILE%":i
+"%ARDUINO_TOOLS%\avr\bin\avrdude" -C"%ARDUINO_TOOLS%\avr\etc\avrdude.conf" -b115200 -carduino -P%1 -p"%TARGET%" -Uflash:w:"%HEX_FILE%":i
