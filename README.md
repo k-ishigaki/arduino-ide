@@ -7,18 +7,14 @@ Neovim + Coc.nvim + cqueryで高度な補完が利用できます．
 
 * Arduino UNOのソースコード作成，ビルド
 
-# できないこと
-
-* デバイスへの書き込み（ROM焼き）  
-→Dockerコンテナ内ではUSBデバイスが扱えないため，Dockerコンテナ外で書き込む必要があります．別途Arduino IDE等をお使いください．
-* Arduino UNO以外のデバイスへのビルド  
-→platformio.iniファイル等を修正する必要があります．
-
 # 必要なもの
 
 * Git
 * Docker Desktop for Windows / Docker Desktop for Mac  
 https://www.docker.com/products/docker-desktop
+* Arduino IDE  
+https://www.arduino.cc/en/main/software  
+※Windowsは「Windows Installer」を使用してください．「Windows app」ではavrdudeが使えないためスクリプトが動作しません．
 
 # 使い方
 
@@ -37,6 +33,15 @@ $ docker-compose exec main bash
 # after 'docker-compose exec main bash'
 $ make
 ```
+
+## バイナリ（.hexファイル）書き込み
+
+```bash
+$ .\write_hex.bat COM0                     # Windowsの場合
+$ ./write_hex.sh /dev/cu.usbmodem146101    # Macの場合
+```
+
+※ポート名はArduino IDEから確認してください．
 
 ## ソースコード編集
 
