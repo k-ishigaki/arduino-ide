@@ -55,7 +55,7 @@ $ nvim src/main.cpp
 ```bash
 # after 'dokcer-compose exec main bash'
 $ exit
-$ docker-compose down --rmi all
+$ docker-compose down --rmi all --volume
 ```
 
 # NeoVimのカスタマイズ
