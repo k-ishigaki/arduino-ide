@@ -24,13 +24,13 @@ https://www.arduino.cc/en/main/software
 $ git clone https://github.com/k-ishigaki/arduino-ide.git
 $ cd arduino-ide
 $ docker-compose up -d
-$ docker-compose exec main bash
+$ docker-compose exec main sh
 ```
 
 ## ビルド
 
 ```bash
-# after 'docker-compose exec main bash'
+# after 'docker-compose exec main sh'
 $ make
 ```
 
@@ -46,14 +46,14 @@ $ ./write_hex.sh /dev/cu.usbmodem146101    # Macの場合
 ## ソースコード編集
 
 ```bash
-# after 'docker-compose exec main bash'
+# after 'docker-compose exec main sh'
 $ nvim src/main.cpp
 ```
 
 ## 終了，アンインストール
 
 ```bash
-# after 'dokcer-compose exec main bash'
+# after 'dokcer-compose exec main sh'
 $ exit
 $ docker-compose down --rmi all --volume
 ```

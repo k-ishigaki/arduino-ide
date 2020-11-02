@@ -3,13 +3,13 @@
 %cpp -std=c++11
 
 # includes
--I/root/.platformio/packages/framework-arduinoavr/cores/arduino
--I/root/.platformio/packages/framework-arduinoavr/variants/standard
--I/root/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/EEPROM/src
--I/root/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/HID/src
--I/root/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SPI/src
--I/root/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SoftwareSerial/src
--I/root/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/Wire/src
+-I/root/.platformio/packages/framework-arduino-avr/cores/arduino
+-I/root/.platformio/packages/framework-arduino-avr/variants/standard
+-I/root/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src
+-I/root/.platformio/packages/framework-arduino-avr/libraries/HID/src
+-I/root/.platformio/packages/framework-arduino-avr/libraries/SPI/src
+-I/root/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src
+-I/root/.platformio/packages/framework-arduino-avr/libraries/Wire/src
 -I/root/.platformio/packages/toolchain-atmelavr/avr/include
 -I/root/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include
 -I/root/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include-fixed

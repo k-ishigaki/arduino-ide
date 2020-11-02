@@ -1,43 +1,63 @@
 version: "3"
 services:
+    scripts:
+        image: bash
+        volumes:
+            - shared_bin:/scripts
+            - ./generate_docker_cmd:/generate_docker_cmd
+        command: >
+            /generate_docker_cmd /scripts
+            platformio@${COMPOSE_PROJECT_NAME}_platformio_1
+            cquery@${COMPOSE_PROJECT_NAME}_cquery_1
+
+    docker:
+        build:
+            context: ./docker-docker
+        depends_on:
+            - scripts
+        volumes:
+            - shared_bin:/tmp/shared_bin
+        command: sh -c "cp -f `which docker` /tmp/shared_bin/docker && while sleep 1000; do :; done"
+
     platformio:
         build:
             context: ./platformio-docker
         volumes:
+            - tmp:/tmp
             - ./:/root/project_root
             - platformio:/root/.platformio
-        stdin_open: true
+        command: sh -c "while sleep 1000; do :; done"
 
     cquery:
         build:
             context: ./cquery-docker
         volumes:
+            - tmp:/tmp
             - ./:/root/project_root
             - platformio:/root/.platformio
-        stdin_open: true
-
-    docker-langserver:
-        image: rcjsuen/docker-langserver
-        volumes:
-            - ./:/root/project_root
-        stdin_open: true
-        entrypoint: /bin/ash
+        command: sh -c "while sleep 1000; do :; done"
 
     main:
         build:
             context: ./neovim-docker
             args:
-                cmds:
-                    ${COMPOSE_PROJECT_NAME}_platformio_1:platformio
-                    ${COMPOSE_PROJECT_NAME}_cquery_1:cquery
-                    ${COMPOSE_PROJECT_NAME}_docker-langserver_1:/docker-langserver/bin/docker-langserver
+                EXTRA_COC_PLUGINS: coc-docker
+        depends_on:
+            - docker
         volumes:
+            - tmp:/tmp
             - ./:/root/project_root
             - platformio:/root/.platformio
             - /var/run/docker.sock:/var/run/docker.sock
             - ./coc-settings.json:/root/.config/nvim/coc-settings.json
-        stdin_open: true
+            - /var/lib/docker/volumes/${COMPOSE_PROJECT_NAME}_shared_bin/_data/docker:/usr/local/bin/docker
+            - /var/lib/docker/volumes/${COMPOSE_PROJECT_NAME}_shared_bin/_data/docker-langserver:/usr/local/bin/docker-langserver
+            - /var/lib/docker/volumes/${COMPOSE_PROJECT_NAME}_shared_bin/_data/platformio:/usr/local/bin/platformio
+            - /var/lib/docker/volumes/${COMPOSE_PROJECT_NAME}_shared_bin/_data/cquery:/usr/local/bin/cquery
+        command: sh -c "sudo apk add --no-cache make && while sleep 1000; do :; done"
         working_dir: /root/project_root
 
 volumes:
     platformio:
+    shared_bin:
+    tmp:
