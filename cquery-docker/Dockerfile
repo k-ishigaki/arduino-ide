@@ -1,10 +1,12 @@
-FROM ubuntu AS builder
+FROM ubuntu:20.04 AS builder
 
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
     git \
     libncurses-dev \
+    libtinfo5 \
     zlib1g-dev
 
 RUN git clone https://github.com/cquery-project/cquery.git --recursive \
