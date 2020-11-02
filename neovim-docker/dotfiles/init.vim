@@ -25,7 +25,7 @@ endif
 set background=dark
 
 " カラースキーマ設定
-colorscheme railscasts
+colorscheme iceberg
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -61,6 +61,7 @@ set imsearch=-1		" 検索時のデフォルト値 -1:equal to iminsert
 set formatoptions+=r	" 挿入モード時，Enter押下でコメントを自動挿入する
 set formatoptions-=o	" 'o','O'でのコメントを自動挿入しない
 set formatoptions-=t	" 自動折り返しをしないようにする
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,mac,dos " enable automatically detection for existing file
 set fileformat=unix	" set default fileformat to unix line endings
 set noundofile		" undoファイルを作成しない
@@ -151,6 +152,9 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Use <F2> for rename current word
+nmap <silent> <F2> <Plug>(coc-rename)
 
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>

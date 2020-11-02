@@ -6,7 +6,7 @@
 [subrepo]
 	remote = https://github.com/k-ishigaki/neovim-docker.git
 	branch = master
-	commit = e12c210f121c80fabfaef21f7164ccdaa0b5aefb
-	parent = 889c665597ee5e1dca6573c0e4747262c0df5343
+	commit = a40be04f92cbb1979c1999c2028d4f34b3c7cf85
+	parent = 6c71b1c5ce9a8e60f4f0d388b46ee076bc08c866
 	method = merge
-	cmdver = 0.4.0
+	cmdver = 0.4.1
